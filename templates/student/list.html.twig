@@ -5,8 +5,18 @@
                 <td>{{ student.firstName }}</td>
                 <td>{{ student.lastName }}</td>
                 <td>{{ student.birthDate|date("d/m/Y") }}</td>
+                <td>
+                    {% if student.marks|length > 0 %}
+                        <ul>
+                            {% for mark in student.marks %}
+                                <li>Matière: {{ ('mark.' ~ mark.subject)|trans }} - Note: {{ mark.value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </td>
                 <td><a href="{{ path('student_delete', {'id' : student.id}) }}">Supprimer</a></td>
                 <td><a href="{{ path('student_update', {'id' : student.id}) }}">Modifier</a></td>
+                <td><a href="{{ path('mark_create', {'id' : student.id}) }}">Ajouter une note</a></td>
             </tr>
         {% endfor %}
     </table>

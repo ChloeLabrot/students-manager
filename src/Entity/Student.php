@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -34,6 +36,16 @@ class Student
      * @ORM\Column(type="datetime")
      */
     private $birthDate;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="student")
+     */
+    private $marks;
+
+    public function __construct()
+    {
+        $this->marks = new ArrayCollection();
+    }
 
     public function getId(): ?string
     {
@@ -72,6 +84,36 @@ class Student
     public function setBirthDate(\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mark[]
+     */
+    public function getMarks(): Collection
+    {
+        return $this->marks;
+    }
+
+    public function addMark(Mark $mark): self
+    {
+        if (!$this->marks->contains($mark)) {
+            $this->marks[] = $mark;
+            $mark->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMark(Mark $mark): self
+    {
+        if ($this->marks->contains($mark)) {
+            $this->marks->removeElement($mark);
+            if ($mark->getStudent() === $this) {
+                $mark->setStudent(null);
+            }
+        }
 
         return $this;
     }

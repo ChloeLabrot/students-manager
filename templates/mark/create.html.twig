@@ -1,0 +1,5 @@
+{% block body %}
+    <p>Ajout d'une note pour l'élève {{ student.firstName }} {{ student.lastName }}</p>
+    {{ form(form) }}
+    <a href="{{ path('student_index') }}">< Retour</a>
+{% endblock %}

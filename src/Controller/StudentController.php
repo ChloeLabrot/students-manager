@@ -12,7 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /** @Route("/student", name="student_") */
 class StudentController extends AbstractController
 {
-
     /**
      * @Route("/", name="index")
      */
@@ -91,6 +90,11 @@ class StudentController extends AbstractController
     public function deleteAction(Student $student)
     {
         $entityManager = $this->getDoctrine()->getManager();
+
+        foreach ($student->getMarks() as $mark) {
+            $student->removeMark($mark);
+            $entityManager->remove($mark);
+        }
         $entityManager->remove($student);
         $entityManager->flush();
 
