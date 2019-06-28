@@ -38,7 +38,7 @@ class Student
     private $birthDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="student")
+     * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="student", cascade={"remove"})
      */
     private $marks;
 
