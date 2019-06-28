@@ -1,0 +1,14 @@
+{% block body %}
+    <table>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.birthDate|date("d/m/Y") }}</td>
+                <td><a href="{{ path('student_delete', {'id' : student.id}) }}">Supprimer</a></td>
+                <td><a href="{{ path('student_update', {'id' : student.id}) }}">Modifier</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ path('student_create') }}">Ajouter un élève</a>
+{% endblock %}
