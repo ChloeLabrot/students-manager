@@ -24,13 +24,13 @@ class Mark
 
     /**
      * @Assert\Type(
-     *     type="integer",
-     *     message="La valeur {{ value }} n'est pas une valeur valide."
+     *     type="float",
+     *     message="mark.value_invalid_message"
      * )
-     * @Assert\GreaterThanOrEqual(0, message="Une note ne peut être inférieure à 0")
-     * @Assert\LessThanOrEqual(20, message="Une note ne peut être supérieure à 20")
+     * @Assert\GreaterThanOrEqual(0, message="mark.constraint_greater_than")
+     * @Assert\LessThanOrEqual(20, message="mark.constraint_lesser_than")
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $value;
 
@@ -56,12 +56,12 @@ class Mark
         return $this;
     }
 
-    public function getValue(): ?int
+    public function getValue(): ?float
     {
         return $this->value;
     }
 
-    public function setValue(int $value): self
+    public function setValue(float $value): self
     {
         $this->value = $value;
 

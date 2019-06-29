@@ -1,3 +1,7 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter une note{% endblock %}
+
 {% block body %}
     <p>Ajout d'une note pour l'élève {{ student.firstName }} {{ student.lastName }}</p>
     {{ form(form) }}

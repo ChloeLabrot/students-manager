@@ -20,19 +20,19 @@ class Student
     private $id;
 
     /**
-     * @Assert\NotBlank(message="Cet information ne peut pas être vide")
+     * @Assert\NotBlank(message="student.constraint_not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $firstName;
 
     /**
-     * @Assert\NotBlank(message="Cet information ne peut pas être vide")
+     * @Assert\NotBlank(message="student.constraint_not_blank")
      * @ORM\Column(type="string", length=255)
      */
     private $lastName;
 
     /**
-     * @Assert\NotBlank(message="Cet information ne peut pas être vide")
+     * @Assert\NotBlank(message="student.constraint_not_blank")
      * @ORM\Column(type="datetime")
      */
     private $birthDate;

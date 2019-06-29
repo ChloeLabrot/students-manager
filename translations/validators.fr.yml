@@ -1,0 +1,7 @@
+mark:
+  value_invalid_message: "La valeur {{ value }} n'est pas une note valide."
+  constraint_greater_than: "Une note ne peut être inférieure à {{ compared_value }}"
+  constraint_lesser_than: "Une note ne peut être supérieure à {{ compared_value }}"
+
+student:
+  constraint_not_blank: 'Cette information ne peut pas être vide'

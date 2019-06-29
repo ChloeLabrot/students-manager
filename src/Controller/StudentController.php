@@ -17,7 +17,7 @@ class StudentController extends AbstractController
      */
     public function listAction()
     {
-        $students = $this->getDoctrine()->getRepository('App\Entity\Student')->findAll();
+        $students = $this->getDoctrine()->getRepository(Student::class)->findAll();
 
         return $this->render('student/list.html.twig', [
             'students' => $students,
@@ -36,7 +36,6 @@ class StudentController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $student = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();

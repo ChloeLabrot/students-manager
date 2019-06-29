@@ -14,7 +14,9 @@ class StudentType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('birthDate', BirthdayType::class)
+            ->add('birthDate', BirthdayType::class, [
+                'years' => range(date('Y'),date('Y') - 50),
+            ])
             ->add('save', SubmitType::class)
         ;
     }
